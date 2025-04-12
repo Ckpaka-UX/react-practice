@@ -13,7 +13,7 @@ function App() {
     <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' ,  width: "100vh" }} >
       <Typography variant='h1'> ToDo List</Typography>
       {/* comment */}
-      <Box component="section" sx={{ p: 2, }}>
+      <Box className="big-color" component="section" sx={{ p: 2, }}>
       <TextField sx={{width: "100%"}} id="outlined-basic" label="Type of Task" variant="outlined" />
       </Box>
     </Box>
