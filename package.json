@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://Ckpaka-UX.github.io/react-practice/",
   "scripts": {
+    "predepoly": "npm run build",
+    "deploy": "gh-page -d build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
