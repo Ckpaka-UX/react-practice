@@ -1,27 +1,61 @@
-import { useState } from 'react'
-import './App.css'
-import Logos from './components/logos.component'
+// src/App.jsx
+import React, { useState } from "react";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import "./App.css";
+// app components
+import TaskInput from "./components/TaskInput";
+import TaskList from "./components/TaskList";
+import TaskHistory from "./components/TaskHistory";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
+
+  const addTask = (text) => {
+    setTasks([...tasks, { id: Date.now(), text }]);
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const completeTask = (id) => {
+    const taskToComplete = tasks.find((task) => task.id === id);
+    if (taskToComplete) {
+      setTasks(tasks.filter((task) => task.id !== id));
+      setCompletedTasks([...completedTasks, taskToComplete]);
+    }
+  };
+
+  const editTask = (id, newText) => {
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, text: newText } : task))
+    );
+  };
 
   return (
-    <>
-      <Logos />
-      <h1>Catherine Kpaka</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Container maxWidth="lg">
+      <Box sx={{ bgcolor: "#cfe8fc", height: "100vh", width: "100vh" }}>
+        <Typography variant="h1">ToDo List</Typography>
+        <Box className="bg-color" component="section" sx={{ p: 2 }}>
+          <TaskInput onAddTask={addTask} />
+        </Box>
+        <Box sx={{ p: 2 }}>
+          <TaskList
+            tasks={tasks}
+            onDelete={deleteTask}
+            onComplete={completeTask}
+            onEdit={editTask}
+          />
+        </Box>
+        <Box sx={{ p: 2 }}>
+          <TaskHistory completedTasks={completedTasks} />
+        </Box>
+      </Box>
+    </Container>
+  );
+};
 
-export default App
+export default App;
