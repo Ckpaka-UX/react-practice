@@ -5,6 +5,51 @@
   text-align: center;
 }
 
+body {
+  background: #F9F5F4;
+  color: white;
+}
+
+.layout {
+  display: flex;
+width: 430px;
+padding: 56px 22px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+h1 {
+  color: black;
+}
+
+
+.typography {
+  color: #000;
+font-family: Inter;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.72px;
+}
+
+.layout {
+  display: flex;
+height: 56px;
+padding: 14px 21px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 40px;
+flex: 1 0 0;
+}
+
+style {
+  border-radius: 12px;
+background: #F3EFEE;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
